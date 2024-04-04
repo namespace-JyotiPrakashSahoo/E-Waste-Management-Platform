@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Nearest E-Waste Facility</title>
+    <!-- Add Bootstrap CSS and Google Maps JavaScript API -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Find Nearest E-Waste Facility</h1>
+        <p>Enter your pincode to get directions to the nearest E-waste facility:</p>
+
+        <!-- Input form for pincode -->
+        <div class="input-group mb-3">
+            <input type="text" id="pincode" class="form-control" placeholder="Enter Pincode">
+            <div class="input-group-append">
+                <button class="btn btn-primary" onclick="findNearestFacility()">Find Facility</button>
+            </div>
+        </div>
+
+        <!-- Map container -->
+        <div id="map" style="height: 400px;"></div>
+    </div>
+
+    <script>
+        function findNearestFacility() {
+            const pincode = document.getElementById("pincode").value;
+
+            // Use Google Maps Geocoding API to get the latitude and longitude for the pincode
+            // Then, use the obtained coordinates to find nearby E-waste facilities and display directions.
+            
+            // Your code for geocoding and direction display here
+        }
+    </script>
+</body>
+</html>

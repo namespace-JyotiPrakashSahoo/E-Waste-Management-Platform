@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Credit Points Calculator</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+        #input-area {
+            background-color: lightblue;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Device Credit Points Calculator</h1>
+                <div id="input-area">
+                    <p>Enter your device model number to get approximate credit points:</p>
+                    <div class="input-group">
+                        <input type="text" id="modelInput" class="form-control" placeholder="Device Model Number">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" onclick="calculatePoints()">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="result" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculatePoints() {
+            event.preventDefault();
+            const modelInput = document.getElementById("modelInput").value;
+
+            // You can add JavaScript code here to calculate credit points based on the entered device model.
+            // For simplicity, we'll use a placeholder message in this example.
+            if (modelInput) {
+            const points = ((Math.random() * 50) + 1).toFixed(2);
+            const result = document.getElementById("result");
+            result.innerHTML = `Approximate credit points for model "${modelInput}": ${points}`;
+            } else {
+                alert('Please fill in the device model field.');
+            }
+        }
+    </script>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

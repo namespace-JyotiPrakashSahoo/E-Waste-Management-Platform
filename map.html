@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mapbox API Integration</title>
+  <style>
+    #map {
+      width: 50%;
+      height: 100vh;
+      float: left;
+    }
+
+    #distance {
+      width: 50%;
+      height: 100vh;
+      float: right;
+    }
+
+    #image-location {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="distance"></div>
+
+  <!-- Image location placeholder -->
+  <div id="C:\Users\DEBASMITA SAHOO\Downloads\E-Waste-Management\Map.jpg"></div>
+
+  <!-- Distance calculation script -->
+  <script>
+    // Calculate the distance from the current location to any selected location
+    function calculateDistance(currentLocation, selectedLocation) {
+      // Calculate the distance between the two locations
+      const distance = turf.distance(currentLocation, selectedLocation, { units: 'miles' });
+
+      // Update the distance element on the right side of the webpage
+      document.getElementById('distance').innerHTML = `Distance to selected location: ${distance.toFixed(2)} miles`;
+    }
+
+    // Listen for clicks on the image location placeholder
+    document.getElementById('image-location').addEventListener('click', function(event) {
+      // Get the selected location
+      const selectedLocation = event.target.getBoundingClientRect();
+
+      // Calculate the distance from the current location to the selected location
+      calculateDistance(map.getCenter(), selectedLocation);
+    });
+  </script>
+</body>
+</html>

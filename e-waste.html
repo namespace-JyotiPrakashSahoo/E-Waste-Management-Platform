@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-waste Collection Centers</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind-dark.min.css" rel="stylesheet">
+<style> 
+  .left-image {
+    float: right; /* Float the image to the left */
+    /* margin-right: 10px; Add spacing to the right of the image */
+}
+</style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4">
+    <h1 class="text-center text-4xl font-semibold my-8">E-waste Collection Centers</h1>
+    <div >
+    <button id="getLocation" class="bg-blue-600 text-white px-6 py-3 h-13 rounded text-lg cursor-pointer flex flex-row">Find Nearest Facility</button>
+    <input type="number" class="w-100 px-4 py-2 rounded-l-lg border outline-solid-black" placeholder="Enter Pincode">
+    <div id="map">
+      <ul id="locationsList"></ul>
+     </div>
+     <img src="Images/map1.jpg" class="right-image">
+    </div>
+    <div id="education" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">Harmful Components of E-Waste</h2>
+      <button id="showPopup" class="bg-blue-600 text-white px-6 py-3 rounded text-lg cursor-pointer">Learn More</button>
+      <div id="popup" class="hidden bg-white p-4 border border-gray-300 rounded mt-6">
+        <p>...</p>
+      </div>
+    </div>
+    <div id="deviceForm" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">Calculate Credit Points</h2>
+      <form>
+        <label for="deviceModel">Device Model:</label>
+        <input type="text" id="deviceModel" class="border border-gray-300 px-3 py-2 rounded">
+        <button id="calculatePoints" class="bg-blue-600 text-white px-6 py-3 rounded text-lg ml-4 cursor-pointer">Calculate</button>
+      </form>
+      <div id="points" class="mt-4"></div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('getLocation').addEventListener('click', () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getNearestFacility);
+      } else {
+        alert('Geolocation is not supported by your browser.');
+      }
+    });
+
+    function getNearestFacility(position) {
+      // Sample data for nearest facilities
+      const facilities = [
+        { name: 'Facility A', distance: 5 },
+        { name: 'Facility B', distance: 8 },
+        { name: 'Facility C', distance: 12 },
+      ];
+      const locationsList = document.getElementById('locationsList');
+      locationsList.innerHTML = '';
+      facilities.forEach(facility => {
+        locationsList.insertAdjacentHTML('beforeend', `<li>${facility.name} - ${facility.distance} km away</li>`);
+      });
+    }
+
+    document.getElementById('showPopup').addEventListener('click', () => {
+      const popup = document.getElementById('popup');
+      if (popup.classList.contains('hidden')) {
+        popup.classList.remove('hidden');
+      } else {
+        popup.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('calculatePoints').addEventListener('click', (event) => {
+      event.preventDefault();
+      const model = document.getElementById('deviceModel').value;
+      if (model) {
+        const points = ((Math.random() * 50) + 1).toFixed(2);
+        document.getElementById('points').textContent = `Credit Points: ${points}`;
+      } else {
+        alert('Please fill in the device model field.');
+      }
+    });
+  </script>
+</body>
+</html>
